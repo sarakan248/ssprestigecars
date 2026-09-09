@@ -4,6 +4,19 @@ body{overflow-x:clip}
 img,video,iframe,canvas,svg{max-width:100%}
 .hero-content,.vehicle-feature,.vehicle-copy,.gallery,.sound-card,.sound-stage,.engine-console,.price-grid,.price-card,.pricing-notes,.conditions-grid,.request,.request-copy,.request form,.form-grid,footer,.footer-brand,.footer-brand>div,.footer-links,.copyright{min-width:0;max-width:100%}
 
+/* Keep the decorative SS perfectly centered in the hero */
+.giant-ss{
+  left:50%!important;
+  right:auto!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  width:100%!important;
+  max-width:100%!important;
+  text-align:center!important;
+  pointer-events:none!important;
+  z-index:1!important;
+}
+
 @media(max-width:1000px){
   .section{padding-left:5vw;padding-right:5vw}
   .request,.vehicle-feature,.sound-stage{grid-template-columns:1fr!important}
@@ -23,7 +36,17 @@ img,video,iframe,canvas,svg{max-width:100%}
   .hero h1{font-size:clamp(42px,12vw,64px)!important;line-height:.95!important;letter-spacing:-.035em!important;max-width:100%!important;overflow-wrap:anywhere}
   .hero p{font-size:17px!important;line-height:1.55!important;max-width:100%!important}
   .hero .eyebrow{font-size:11px!important;letter-spacing:2.3px!important}
-  .giant-ss{right:-12vw!important;max-width:100%;overflow:hidden}
+  .giant-ss{
+    left:50%!important;
+    right:auto!important;
+    top:52%!important;
+    transform:translate(-50%,-50%)!important;
+    width:100%!important;
+    max-width:100%!important;
+    text-align:center!important;
+    font-size:min(42vw,260px)!important;
+    overflow:visible!important;
+  }
   .hero-actions{width:100%;flex-direction:column!important;align-items:stretch!important}
   .hero-actions .button{width:100%;text-align:center}
   .hero-actions .engine-button{align-self:center}
