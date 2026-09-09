@@ -280,3 +280,13 @@ footer{display:grid;grid-template-columns:1.3fr 1fr 1fr;align-items:start;gap:28
 /* BOOKING + LEGAL CONFIRMATION UPDATE */
 .pricing-notes{max-width:1050px;margin:22px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.pricing-notes article{background:#0d0d0d;border:1px solid #3a321d;border-radius:13px;padding:21px}.pricing-notes span{display:block;color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1.2px}.pricing-notes strong{display:block;color:var(--gold2);font-size:22px;margin:8px 0}.pricing-notes p{margin:0;color:#aaa;line-height:1.6}.request-facts{display:grid;gap:10px;margin-top:24px}.request-facts div{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #292929;padding:12px 0}.request-facts strong{color:var(--gold2)}.request-facts span{color:#999;text-align:right}.legal-confirmations{margin-top:20px;padding:18px;background:#0b0b0b;border:1px solid #343434;border-radius:11px}.legal-check{display:grid;grid-template-columns:22px 1fr;gap:11px;align-items:start;padding:10px 0;color:#d6d6d6;font-size:13px;line-height:1.55}.legal-check+.legal-check{border-top:1px solid #242424}.legal-check input{width:18px;height:18px;margin:2px 0 0;accent-color:#daa72f}.legal-check a{color:var(--gold2);text-decoration:underline;text-underline-offset:3px}.legal-note{margin:10px 0 0;color:#777;font-size:12px}.request-buttons .button:disabled{opacity:.42;cursor:not-allowed;filter:grayscale(.25)}.whatsapp.disabled{opacity:.42;pointer-events:none;filter:grayscale(.55)}.form-status{min-height:22px;margin:12px 0 0;color:var(--gold2);font-size:13px}.form-status.error{color:#ff8d8d}
 @media(max-width:700px){.pricing-notes{grid-template-columns:1fr}.request-facts div{flex-direction:column;gap:4px}.request-facts span{text-align:left}.legal-confirmations{padding:14px}}
+
+/* MOBILE VIEWPORT FIX */
+html,body{max-width:100%;overflow-x:clip}
+@media(max-width:600px){
+  .hero{padding-left:24px;padding-right:24px}
+  .hero-content{width:100%;max-width:100%;min-width:0}
+  .hero h1{font-size:clamp(44px,12.5vw,50px);line-height:.94;letter-spacing:-.03em;max-width:100%}
+  .hero p{font-size:17px;max-width:100%}
+  .giant-ss{right:-8vw}
+}
