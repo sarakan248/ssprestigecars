@@ -1,3 +1,5 @@
+(()=>{const l=document.createElement('link');l.rel='stylesheet';l.href='mobile-fix.css?v=20260909-2';document.head.appendChild(l);})();
+
 document.addEventListener('DOMContentLoaded', () => {
   const qs=(s,c=document)=>c.querySelector(s); const qsa=(s,c=document)=>[...c.querySelectorAll(s)];
 
