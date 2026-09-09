@@ -1,0 +1,83 @@
+/* Global responsive hardening for SS Prestige Cars */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{overflow-x:clip}
+img,video,iframe,canvas,svg{max-width:100%}
+.hero-content,.vehicle-feature,.vehicle-copy,.gallery,.sound-card,.sound-stage,.engine-console,.price-grid,.price-card,.pricing-notes,.conditions-grid,.request,.request-copy,.request form,.form-grid,footer,.footer-brand,.footer-brand>div,.footer-links,.copyright{min-width:0;max-width:100%}
+
+@media(max-width:1000px){
+  .section{padding-left:5vw;padding-right:5vw}
+  .request,.vehicle-feature,.sound-stage{grid-template-columns:1fr!important}
+  .price-grid{grid-template-columns:1fr!important}
+}
+
+@media(max-width:800px){
+  .header{padding-left:22px!important;padding-right:22px!important}
+  .brand{min-width:0;gap:10px}
+  .brand span{font-size:14px;letter-spacing:1px;white-space:nowrap}
+  .brand img{width:46px;height:46px;flex:0 0 46px}
+  .header nav{display:none!important}
+  .header-cta .whatsapp,.header .button.compact{display:none!important}
+
+  .hero{min-height:auto!important;padding:122px 22px 62px!important;align-items:flex-start!important}
+  .hero-content{width:100%!important;max-width:100%!important}
+  .hero h1{font-size:clamp(42px,12vw,64px)!important;line-height:.95!important;letter-spacing:-.035em!important;max-width:100%!important;overflow-wrap:anywhere}
+  .hero p{font-size:17px!important;line-height:1.55!important;max-width:100%!important}
+  .hero .eyebrow{font-size:11px!important;letter-spacing:2.3px!important}
+  .giant-ss{right:-12vw!important;max-width:100%;overflow:hidden}
+  .hero-actions{width:100%;flex-direction:column!important;align-items:stretch!important}
+  .hero-actions .button{width:100%;text-align:center}
+  .hero-actions .engine-button{align-self:center}
+  .engine-hint{text-align:left!important;margin-top:14px!important}
+
+  .section{padding:72px 22px!important}
+  .section-heading{margin-bottom:32px!important}
+  .section-heading h2,.request h2,.sound-copy h2{font-size:clamp(32px,9vw,48px)!important;overflow-wrap:anywhere}
+  .vehicle-copy h3{font-size:34px!important}
+  .vehicle-feature>img{height:auto!important;max-height:420px}
+  .gallery{grid-template-columns:1fr!important}
+  .gallery-card.main{grid-column:auto!important;grid-row:auto!important;min-height:320px!important}
+  .gallery-card{min-height:260px!important}
+  .sound-card{padding:24px!important}
+  .sound-image{min-height:360px!important}
+  .sound-copy{left:20px!important;right:20px!important;bottom:20px!important}
+  .engine-console{padding:34px 20px!important}
+
+  .conditions-grid{grid-template-columns:1fr!important}
+  .pricing-notes{grid-template-columns:1fr!important}
+  .form-grid{grid-template-columns:1fr!important}
+  .full{grid-column:auto!important}
+  .request form{padding:20px!important}
+  .request-buttons{flex-direction:column!important}
+  .request-buttons>*{width:100%!important;text-align:center}
+  .request-facts div{flex-direction:column!important;gap:4px!important}
+  .request-facts span{text-align:left!important}
+
+  footer{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:28px!important;width:100%!important;padding:42px 22px 110px!important;text-align:left!important}
+  footer>div{width:100%!important;max-width:100%!important}
+  .footer-brand{display:grid!important;grid-template-columns:62px minmax(0,1fr)!important;gap:14px!important;justify-content:stretch!important;align-items:start!important}
+  .footer-brand img{width:62px!important;height:62px!important;object-fit:cover}
+  .footer-brand>div{display:block!important;width:auto!important;min-width:0!important}
+  .footer-brand strong{display:block!important;font-size:17px!important;line-height:1.3!important;overflow-wrap:anywhere}
+  .footer-brand p{font-size:15px!important;line-height:1.45!important;margin:6px 0!important}
+  .footer-brand small{display:block!important;font-size:13px!important;line-height:1.5!important;white-space:normal!important;overflow-wrap:anywhere!important}
+  .footer-links{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px 18px!important;align-items:start!important}
+  .footer-links a{font-size:16px!important;line-height:1.4!important}
+  .copyright{display:block!important;width:100%!important;grid-column:auto!important;font-size:13px!important;line-height:1.5!important;white-space:normal!important;overflow-wrap:anywhere!important;padding-top:18px!important}
+  .whatsapp-float{right:16px!important;bottom:16px!important;width:56px!important;height:56px!important}
+}
+
+@media(max-width:430px){
+  .header{padding-left:16px!important;padding-right:16px!important}
+  .brand img{width:42px;height:42px;flex-basis:42px}
+  .brand span{font-size:12px!important;letter-spacing:.8px!important}
+  .hero{padding-left:18px!important;padding-right:18px!important}
+  .hero h1{font-size:clamp(40px,13vw,54px)!important}
+  .hero p{font-size:16px!important}
+  .section{padding-left:18px!important;padding-right:18px!important}
+  .price-card{padding:22px!important}
+  .price-card li{gap:14px;align-items:flex-start}
+  .price-card li span{min-width:0}
+  .price-card strong{white-space:nowrap}
+  footer{padding-left:18px!important;padding-right:18px!important}
+  .footer-links{grid-template-columns:1fr!important}
+}
