@@ -13,9 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Engine sound experience
   const audio=qs('#audio'), heroEngineButton=qs('#heroEngineButton'), heroHint=qs('#heroEngineHint');
-  const setEngineState=playing=>{heroEngineButton?.classList.toggle('engine-on',playing);if(heroHint)heroHint.textContent=playing?'Soundcheck läuft – erneut klicken zum Stoppen.':'Originalen M4 Soundcheck abspielen.';};
-  const toggleAudio=()=>{if(!audio)return;if(audio.paused){audio.play().then(()=>setEngineState(true)).catch(()=>{});}else{audio.pause();setEngineState(false);}};
-  heroEngineButton?.addEventListener('click',toggleAudio); audio?.addEventListener('ended',()=>setEngineState(false));
+  const soundcheckDialog=qs('#soundcheckDialog'), soundcheckVideo=qs('#soundcheckVideo'), closeSoundcheck=qs('#closeSoundcheck');
+  const setEngineState=playing=>{heroEngineButton?.classList.toggle('engine-on',playing);if(heroHint)heroHint.textContent=playing?'Hear the Beast – Soundcheck läuft.':'Hear the Beast – M4 Soundcheck.';};
+  const playFallback=()=>{if(!audio)return;audio.play().then(()=>setEngineState(true)).catch(()=>{});};
+  const openSoundcheck=()=>{
+    if(soundcheckVideo&&soundcheckDialog){
+      soundcheckDialog.showModal();
+      soundcheckVideo.currentTime=0;
+      soundcheckVideo.muted=false;
+      soundcheckVideo.play().then(()=>setEngineState(true)).catch(()=>playFallback());
+    }else playFallback();
+  };
+  const stopSoundcheck=()=>{soundcheckVideo?.pause();audio?.pause();soundcheckDialog?.close();setEngineState(false);};
+  heroEngineButton?.addEventListener('click',openSoundcheck);
+  closeSoundcheck?.addEventListener('click',stopSoundcheck);
+  soundcheckDialog?.addEventListener('click',e=>{if(e.target===soundcheckDialog)stopSoundcheck();});
+  soundcheckVideo?.addEventListener('error',()=>{soundcheckDialog?.close();playFallback();});
+  soundcheckVideo?.addEventListener('ended',()=>setEngineState(false));
+  audio?.addEventListener('ended',()=>setEngineState(false));
 
   // Booking form and mandatory legal confirmations
   const form=qs('#requestForm'), submit=qs('#submitRequest'), wa=qs('#dynamicWhatsApp'), status=qs('#formStatus'); const checks=qsa('.legal-required');
