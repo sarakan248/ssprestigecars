@@ -39,7 +39,13 @@
       </button>
       <a class="button outline" href="#anfrage">Mietanfrage</a>
     </div>
-    <p class="engine-hint" id="heroEngineHint">Originalen M4 Soundcheck abspielen.</p>
+    <p class="engine-hint" id="heroEngineHint">Hear the Beast – M4 Soundcheck.</p>
+    <dialog id="soundcheckDialog" class="soundcheck-dialog">
+      <button id="closeSoundcheck" type="button" aria-label="Soundcheck schliessen">×</button>
+      <video id="soundcheckVideo" playsinline controls preload="metadata">
+        <source src="assets/soundcheck.mp4" type="video/mp4">
+      </video>
+    </dialog>
     <audio id="audio" preload="metadata"><source src="assets/auspuff-sound.mp3" type="audio/mpeg"></audio>
     <small>Die Fahrzeugverfügbarkeit wird nicht öffentlich angezeigt. Jede Anfrage wird persönlich geprüft.</small>
   </div>
