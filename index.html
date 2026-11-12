@@ -34,22 +34,27 @@
 
 <main>
 <!-- HERO -->
-<section class="hero hero2" id="top">
-  <div class="h2-bg" aria-hidden="true"></div>
-  <div class="h2-inner">
-    <div class="h2-badges">
-      <div class="h2-badge live"><span class="dot"></span> Bern · Thörishaus</div>
-      <div class="h2-badge">Keine Kaution · Ab 18 Jahren</div>
-    </div>
-    <h1>SPORTWAGEN MIETEN<br><span class="gold-text">IN BERN</span></h1>
-    <div class="h2-car">
-      <div class="h2-glow" aria-hidden="true"></div>
-      <div class="h2-drive">
-        <img src="assets/m4-freigestellt-neu.png" alt="BMW M4 Competition G82 in Black Sapphire" width="1700" height="620" fetchpriority="high">
-        <span class="h2-light l1" aria-hidden="true"></span><span class="h2-light l2" aria-hidden="true"></span>
+<section class="hero hero2 hero-photo" id="top">
+  <div class="h2-stage">
+    <picture>
+      <source media="(max-width:820px)" srcset="assets/hero-hoch.jpg">
+      <img class="h2-photo" src="assets/hero-seite.jpg" alt="BMW M4 Competition G82 an der Aare in Bern" width="2400" height="1600" fetchpriority="high">
+    </picture>
+    <div class="h2-shade" aria-hidden="true"></div>
+    <div class="h2-top">
+      <div class="h2-badges">
+        <div class="h2-badge live"><span class="dot"></span> Bern · Thörishaus</div>
+        <div class="h2-badge">Keine Kaution · Ab 18 Jahren</div>
       </div>
-      <div class="h2-floor" aria-hidden="true"></div>
+      <h1>SPORTWAGEN MIETEN<br><span class="gold-text">IN BERN</span></h1>
     </div>
+    <div class="h2-cta">
+      <a class="btn gold" href="#anfrage">Jetzt buchen</a>
+      <button class="btn sound" id="soundBtn" type="button"><span class="eq"><i></i><i></i><i></i></span> Sound Check</button>
+      <a class="btn ghost" href="#preise">Preis berechnen</a>
+    </div>
+  </div>
+  <div class="h2-inner">
     <div class="h2-info">
       <div>
         <div class="h2-name">BMW M4 Competition</div>
@@ -62,11 +67,6 @@
       <div><b>3.5s</b><span>0–100 km/h</span></div>
       <div><b>0.-</b><span>Kaution</span></div>
       <div><b>18+</b><span>Mindestalter</span></div>
-    </div>
-    <div class="h2-cta">
-      <a class="btn gold" href="#anfrage">Jetzt buchen</a>
-      <button class="btn sound" id="soundBtn" type="button"><span class="eq"><i></i><i></i><i></i></span> Sound Check</button>
-      <a class="btn ghost" href="#preise">Preis berechnen</a>
     </div>
   </div>
 </section>
