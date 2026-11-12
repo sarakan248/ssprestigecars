@@ -1,236 +1,333 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="SS Prestige Cars – BMW M4 Competition G82 Vermietung in Bern mit Wochen- und Wochenendtarifen.">
-  <meta name="theme-color" content="#070707">
-  <title>SS Prestige Cars | BMW M4 Competition G82</title>
-  <link rel="icon" href="assets/logo.png">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SS Prestige Cars | Sportwagen mieten in Bern – BMW M4 Competition ab CHF 109.-</title>
+<meta name="description" content="BMW M4 Competition G82 mieten in Bern und Umgebung. Keine Kaution, ab 18 Jahren, flexible Mietdauer ab 2 Stunden, persönliche Übergabe. Anfrage per WhatsApp.">
+<meta property="og:title" content="SS Prestige Cars – Sportwagen mieten in Bern">
+<meta property="og:description" content="BMW M4 Competition G82 ab CHF 109.- / 2h. Keine Kaution, ab 18 Jahren.">
+<meta property="og:image" content="assets/fotos/m4-1096.jpg">
+<meta name="theme-color" content="#070707">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="header">
-  <a class="brand" href="#home"><img src="assets/logo.png" alt="SS Prestige Cars Logo"><span>SS PRESTIGE CARS</span></a>
-  <nav>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top"><img src="assets/logo.png" alt="SS Prestige Cars Logo" width="44" height="44"><span>SS PRESTIGE <em>CARS</em></span></a>
+  <nav class="links" id="links">
     <a href="#fahrzeug">Fahrzeug</a>
     <a href="#galerie">Galerie</a>
-    <a href="#preise">Tarife</a>
-    <a href="#anfrage">Anfrage</a>
+    <a href="#videos">Videos</a>
+    <a href="#preise">Preise</a>
+    <a href="#faq">FAQ</a>
+    <a href="#kontakt">Kontakt</a>
+    <a class="btn gold small mobile-only" href="#anfrage">Jetzt buchen</a>
   </nav>
-  <div class="header-cta"><a class="whatsapp compact" href="https://wa.me/41797862408?text=Hallo%20SS%20Prestige%20Cars%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Miete." target="_blank" rel="noopener">WhatsApp</a><a class="button compact" href="#anfrage">Mietanfrage</a></div>
+  <a class="btn gold small desktop-only" href="#anfrage">Jetzt buchen</a>
+  <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span></button>
 </header>
 
 <main>
-<section class="hero" id="home">
-  <div class="giant-ss">SS</div>
-  <div class="hero-content">
-    <p class="eyebrow">BERN · SWITZERLAND</p>
-    <h1>Luxury.<br>Performance.<br><span>Prestige.</span></h1>
-    <p>Exklusive BMW M4 Competition G82 Vermietung mit persönlichem Service und digitalem Ablauf.</p>
-    <div class="hero-actions premium-actions">
-      <a class="button" href="#fahrzeug">BMW M4 entdecken</a>
-      <button class="engine-button" id="heroEngineButton" type="button" aria-label="Originalen M4 Soundcheck starten">
-        <span class="engine-ring">
-          <small>SOUND</small>
-          <strong>CHECK</strong>
-          <em>▶</em>
-        </span>
-      </button>
-      <a class="button outline" href="#anfrage">Mietanfrage</a>
+<!-- HERO -->
+<section class="hero hero2" id="top">
+  <div class="h2-bg" aria-hidden="true"></div>
+  <div class="h2-inner">
+    <div class="h2-badges">
+      <div class="h2-badge live"><span class="dot"></span> Bern · Thörishaus</div>
+      <div class="h2-badge">Keine Kaution · Ab 18 Jahren</div>
     </div>
-    <p class="engine-hint" id="heroEngineHint">Hear the Beast – M4 Soundcheck.</p>
-    <dialog id="soundcheckDialog" class="soundcheck-dialog">
-      <button id="closeSoundcheck" type="button" aria-label="Soundcheck schliessen">×</button>
-      <video id="soundcheckVideo" playsinline controls preload="metadata">
-        <source src="assets/CA333E3C-2557-44D6-88B8-CCC1BAD08603.mp4" type="video/mp4">
-      </video>
-    </dialog>
-    <audio id="audio" preload="metadata"><source src="assets/auspuff-sound.mp3" type="audio/mpeg"></audio>
-    <small>Die Fahrzeugverfügbarkeit wird nicht öffentlich angezeigt. Jede Anfrage wird persönlich geprüft.</small>
+    <h1>SPORTWAGEN MIETEN<br><span class="gold-text">IN BERN</span></h1>
+    <div class="h2-car">
+      <div class="h2-glow" aria-hidden="true"></div>
+      <div class="h2-drive">
+        <img src="assets/m4-freigestellt-neu.png" alt="BMW M4 Competition G82 in Black Sapphire" width="1700" height="620" fetchpriority="high">
+        <span class="h2-light l1" aria-hidden="true"></span><span class="h2-light l2" aria-hidden="true"></span>
+      </div>
+      <div class="h2-floor" aria-hidden="true"></div>
+    </div>
+    <div class="h2-info">
+      <div>
+        <div class="h2-name">BMW M4 Competition</div>
+        <div class="h2-sub">G82 · Heckantrieb · Black Sapphire · Baujahr 2024</div>
+      </div>
+      <div class="h2-price"><small>Ab</small><b class="gold-text">CHF 109</b><span>/ 2h</span></div>
+    </div>
+    <div class="h2-specs">
+      <div><b>510 PS</b><span>Heckantrieb</span></div>
+      <div><b>3.5s</b><span>0–100 km/h</span></div>
+      <div><b>0.-</b><span>Kaution</span></div>
+      <div><b>18+</b><span>Mindestalter</span></div>
+    </div>
+    <div class="h2-cta">
+      <a class="btn gold" href="#anfrage">Jetzt buchen</a>
+      <button class="btn sound" id="soundBtn" type="button"><span class="eq"><i></i><i></i><i></i></span> Sound Check</button>
+      <a class="btn ghost" href="#preise">Preis berechnen</a>
+    </div>
   </div>
 </section>
 
-<section class="section vehicle" id="fahrzeug">
-  <div class="section-heading">
-    <p class="eyebrow">DAS FAHRZEUG</p>
-    <h2>BMW M4 Competition G82</h2>
-    <p>Performance, Komfort und ein unverwechselbarer Auftritt.</p>
-  </div>
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span>BMW M4 Competition</span><span>Keine Kaution</span><span>Ab 18 Jahren</span><span>Persönliche Übergabe</span><span>Ab 2 Stunden</span><span>TWINT · Bar · Überweisung</span><span>Bern &amp; Umgebung</span><span>M Carbon Schalensitze</span>
+  <span>BMW M4 Competition</span><span>Keine Kaution</span><span>Ab 18 Jahren</span><span>Persönliche Übergabe</span><span>Ab 2 Stunden</span><span>TWINT · Bar · Überweisung</span><span>Bern &amp; Umgebung</span><span>M Carbon Schalensitze</span>
+</div></div>
 
-  <div class="vehicle-feature">
-    <img src="assets/hero.jpg" alt="BMW M4 Competition G82 Dreiviertelansicht">
-    <div class="vehicle-copy">
-      <p class="eyebrow">BLACK SAPPHIRE METALLIC</p>
-      <h3>Ein Statement auf jeder Strasse.</h3>
-      <p>Das tatsächliche Fahrzeug mit M Carbon Schalensitzen, hochwertigem Innenraum und kompromissloser M-Präsenz.</p>
-      <div class="spec-grid">
-        <article><span>Baujahr</span><strong>2024</strong></article>
-        <article><span>0–100 km/h</span><strong>3,5 s</strong></article>
-        <article><span>Getriebe</span><strong>8-Gang M Steptronic</strong></article>
-        <article><span>Kraftstoff</span><strong>Super Plus (98 Oktan)</strong></article>
-        <article><span>Aussenfarbe</span><strong>Black Sapphire Metallic</strong></article>
+<!-- STEPS -->
+<section class="section" id="ablauf">
+  <div class="wrap">
+    <div class="eyebrow">In 3 Schritten zum Sportwagen</div>
+    <h2 class="title">SO EINFACH<br>GEHT'S<span class="g">.</span></h2>
+    <p class="sub">Vom ersten Klick bis zur Schlüsselübergabe – persönlich und ohne Papierchaos.</p>
+    <div class="steps">
+      <article class="card step reveal"><span class="num">01</span><h3>Anfrage senden</h3><p>Wunschzeitraum und Tarif per WhatsApp oder Formular schicken. Jede Anfrage wird persönlich geprüft.</p></article>
+      <article class="card step reveal"><span class="num">02</span><h3>Bestätigung erhalten</h3><p>Wir bestätigen die Verfügbarkeit oder schlagen eine Alternative vor und legen Übergabeort und -zeit gemeinsam fest.</p></article>
+      <article class="card step reveal"><span class="num">03</span><h3>Losfahren</h3><p>Ausweis und Führerschein im Original zeigen, Vorschäden gemeinsam dokumentieren – Schlüssel nehmen und geniessen.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- FAHRZEUG -->
+<section class="section dark" id="fahrzeug">
+  <div class="wrap">
+    <div class="eyebrow">Unser Fahrzeug</div>
+    <h2 class="title">EIN STATEMENT<br>AUF JEDER STRASSE<span class="g">.</span></h2>
+    <p class="sub">Das tatsächliche Fahrzeug – sorgfältig gepflegt, mit M Carbon Schalensitzen, hochwertigem Innenraum und kompromissloser M-Präsenz.</p>
+    <div class="car">
+      <div class="car-media reveal">
+        <img src="assets/fotos/m4-1111.jpg" alt="BMW M4 Competition G82 in Black Sapphire Metallic, Frontansicht" loading="lazy">
+        <span class="badge">2024</span>
+      </div>
+      <div class="car-info reveal">
+        <h3 class="car-name">BMW M4 Competition</h3>
+        <div class="car-sub">G82 · Black Sapphire Metallic</div>
+        <ul class="feat">
+          <li>M Carbon Schalensitze</li>
+          <li>8-Gang M Steptronic</li>
+          <li>Persönliche Übergabe in Bern &amp; Umgebung</li>
+          <li>Keine Kaution</li>
+        </ul>
+        <dl class="specs">
+          <div><dt>Modell</dt><dd>BMW M4 Competition G82</dd></div>
+          <div><dt>Baujahr</dt><dd>2024</dd></div>
+          <div><dt>Farbe</dt><dd>Black Sapphire Metallic</dd></div>
+          <div><dt>Leistung</dt><dd>510 PS</dd></div>
+          <div><dt>Antrieb</dt><dd>Heckantrieb</dd></div>
+          <div><dt>Sprint</dt><dd>0–100 km/h in 3.5 s</dd></div>
+          <div><dt>Getriebe</dt><dd>8-Gang M Steptronic</dd></div>
+          <div><dt>Kraftstoff</dt><dd>Super Plus 98</dd></div>
+        </dl>
+        <div class="price-row">
+          <div><span>Preis ab</span><b>CHF 109</b></div>
+          <a class="btn gold" href="#preise">Preis berechnen</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section gallery-section" id="galerie">
-  <div class="section-heading">
-    <p class="eyebrow">GALERIE</p>
-    <h2>Jede Perspektive ein Statement.</h2>
-  </div>
-
-  <div class="gallery">
-    <button class="gallery-card main" data-image="assets/front.jpg">
-      <img src="assets/front.jpg" alt="BMW M4 Frontansicht">
-      <span>Frontansicht</span>
-    </button>
-    <button class="gallery-card" data-image="assets/hero.jpg">
-      <img src="assets/hero.jpg" alt="BMW M4 Dreiviertelansicht">
-      <span>Dreiviertelansicht</span>
-    </button>
-    <button class="gallery-card" data-image="assets/side.jpg">
-      <img src="assets/side.jpg" alt="BMW M4 Seitenansicht">
-      <span>Seitenansicht</span>
-    </button>
-    <button class="gallery-card" data-image="assets/rear.jpg">
-      <img src="assets/rear.jpg" alt="BMW M4 Heckansicht">
-      <span>Heckansicht</span>
-    </button>
-    <button class="gallery-card" data-image="assets/cockpit.jpg">
-      <img src="assets/cockpit.jpg" alt="BMW M4 Cockpit">
-      <span>Cockpit</span>
-    </button>
-    <button class="gallery-card" data-image="assets/seats.jpg">
-      <img src="assets/seats.jpg" alt="BMW M Carbon Schalensitze">
-      <span>M Carbon Schalensitze</span>
-    </button>
+<!-- GALERIE -->
+<section class="section" id="galerie">
+  <div class="wrap">
+    <div class="eyebrow">Galerie</div>
+    <h2 class="title">JEDE PERSPEKTIVE<br>EIN STATEMENT<span class="g">.</span></h2>
+    <div class="gallery" id="gallery">
+      <button class="g-item" data-src="assets/fotos/m4-1096.jpg"><img src="assets/fotos/m4-1096.jpg" alt="BMW M4 Competition Seitenansicht an der Aare in Bern" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1111.jpg"><img src="assets/fotos/m4-1111.jpg" alt="BMW M4 Competition Frontansicht" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1120.jpg"><img src="assets/fotos/m4-1120.jpg" alt="BMW M4 Competition Heck vor dem Berner Münster" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1103.jpg"><img src="assets/fotos/m4-1103.jpg" alt="BMW M4 Seitenprofil vor der Berner Altstadt" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1125.jpg"><img src="assets/fotos/m4-1125.jpg" alt="Cockpit und M Lenkrad des BMW M4" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1104.jpg"><img src="assets/fotos/m4-1104.jpg" alt="M Carbon Schalensitz mit M4-Logo" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1127.jpg"><img src="assets/fotos/m4-1127.jpg" alt="BMW M4 Dreiviertelansicht von hinten" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1112.jpg"><img src="assets/fotos/m4-1112.jpg" alt="Competition-Emblem am Kotflügel" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1123.jpg"><img src="assets/fotos/m4-1123.jpg" alt="Rückleuchte des BMW M4 mit Berner Münster" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1129.jpg"><img src="assets/fotos/m4-1129.jpg" alt="Einstiegsleiste mit M4-Schriftzug" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1130.jpg"><img src="assets/fotos/m4-1130.jpg" alt="Innenraum des BMW M4 durch die Frontscheibe" loading="lazy"></button>
+      <button class="g-item" data-src="assets/fotos/m4-1132.jpg"><img src="assets/fotos/m4-1132.jpg" alt="Heckspoiler des BMW M4" loading="lazy"></button>
+    </div>
   </div>
 </section>
 
-<section class="section pricing" id="preise">
-  <div class="section-heading">
-    <p class="eyebrow">TARIFE</p>
-    <h2>Wähle deinen Drive.</h2>
-    <p>Unter der Woche: Montag bis Donnerstag · Wochenende: Freitag 17:00 bis Sonntag 23:59</p>
-  </div>
-
-  <div class="price-grid">
-    <article class="price-card">
-      <h3>Unter der Woche</h3>
-      <ul>
-        <li><span>2 Stunden <small>· 100 km inklusive</small></span><strong>CHF 109</strong></li>
-        <li><span>3 Stunden <small>· 150 km inklusive</small></span><strong>CHF 139</strong></li>
-        <li><span>4 Stunden <small>· 180 km inklusive</small></span><strong>CHF 159</strong></li>
-        <li><span>5 Stunden <small>· 220 km inklusive</small></span><strong>CHF 179</strong></li>
-        <li><span>6 Stunden <small>· 250 km inklusive</small></span><strong>CHF 199</strong></li>
-        <li><span>12 Stunden <small>· 350 km inklusive</small></span><strong>CHF 269</strong></li>
-        <li><span>24 Stunden <small>· 450 km inklusive</small></span><strong>CHF 399</strong></li>
-        <li><span>48 Stunden <small>· 750 km inklusive</small></span><strong>CHF 699</strong></li>
-        <li><span>7 Tage <small>· 1'500 km inklusive</small></span><strong>CHF 1'999</strong></li>
-      </ul>
-    </article>
-
-    <article class="price-card featured">
-      <div class="badge">WEEKEND</div>
-      <h3>Wochenende</h3>
-      <ul>
-        <li><span>2 Stunden <small>· 100 km inklusive</small></span><strong>CHF 129</strong></li>
-        <li><span>3 Stunden <small>· 150 km inklusive</small></span><strong>CHF 159</strong></li>
-        <li><span>4 Stunden <small>· 180 km inklusive</small></span><strong>CHF 189</strong></li>
-        <li><span>5 Stunden <small>· 220 km inklusive</small></span><strong>CHF 209</strong></li>
-        <li><span>6 Stunden <small>· 250 km inklusive</small></span><strong>CHF 229</strong></li>
-        <li><span>12 Stunden <small>· 350 km inklusive</small></span><strong>CHF 299</strong></li>
-        <li><span>24 Stunden <small>· 450 km inklusive</small></span><strong>CHF 449</strong></li>
-        <li><span>48 Stunden <small>· 750 km inklusive</small></span><strong>CHF 799</strong></li>
-        <li><span>Wochenend-Paket <small>· 1'000 km inklusive</small></span><strong>CHF 899</strong></li>
-        <li><span>7 Tage <small>· 1'500 km inklusive</small></span><strong>CHF 1'999</strong></li>
-      </ul>
-    </article>
-  </div>
-  <div class="pricing-notes">
-    <article><span>Zusatzkilometer</span><strong>CHF 0.90 / km</strong><p>Zusätzliche Kilometer über die im gewählten Tarif enthaltene Kilometerleistung hinaus werden bei der Rückgabe verrechnet.</p></article>
+<!-- VIDEOS -->
+<section class="section" id="videos">
+  <div class="wrap">
+    <div class="eyebrow">Videos</div>
+    <h2 class="title">BY NIGHT<span class="g">.</span></h2>
+    <div class="v-grid">
+      <div class="v-card reveal"><video src="assets/reel-1.mp4" poster="assets/reel-1.jpg" muted loop playsinline preload="none" aria-label="BMW M4 fährt aus der Tiefgarage"></video><button class="reel-sound v-sound" type="button" aria-label="Ton einschalten">Ton an</button></div>
+      <div class="v-card reveal"><video src="assets/reel-2.mp4" poster="assets/reel-2.jpg" muted loop playsinline preload="none" aria-label="Start-Knopf im BMW M4 bei Nacht"></video><button class="reel-sound v-sound" type="button" aria-label="Ton einschalten">Ton an</button></div>
+      <div class="v-card reveal"><video src="assets/reel-3.mp4" poster="assets/reel-3.jpg" muted loop playsinline preload="none" aria-label="BMW M4 bei Nacht vor dem Hotel"></video><button class="reel-sound v-sound" type="button" aria-label="Ton einschalten">Ton an</button></div>
+    </div>
   </div>
 </section>
 
-<section class="section conditions" id="bedingungen">
-  <div class="section-heading">
-    <p class="eyebrow">WICHTIGE INFORMATIONEN</p>
-    <h2>Transparent vor der Fahrt.</h2>
-  </div>
-  <div class="conditions-grid">
-    <article><span>Mindestalter</span><strong>18 Jahre</strong><p>Gültiger Führerschein und Ausweis erforderlich.</p></article>
-    <article><span>Verspätete Rückgabe</span><strong>Klare Zeitregelung</strong><p>0–10 Min. Kulanz · 11–30 Min. CHF 40 · 31–60 Min. CHF 60 · ab 61 Min. zusätzlich CHF 60 je angefangene weitere Stunde.</p></article>
-    <article><span>Mehrkilometer</span><strong>CHF 0.90 / km</strong><p>Zusätzliche Kilometer werden bei Rückgabe berechnet.</p></article>
-    <article><span>Zahlung</span><strong>TWINT · Bar · Überweisung</strong><p>Überweisung im Voraus nach Bestätigung.</p></article>
-    <article><span>Tankregelung</span><strong>Gleicher Tankstand</strong><p>Das Fahrzeug wird mit vereinbartem Tankstand zurückgegeben.</p></article>
-    <article><span>Standort</span><strong>Bern und Umgebung</strong><p>Übergabeort wird individuell bestätigt.</p></article>
-    <article><span>Kaution</span><strong>Keine Kaution</strong><p>Der Verzicht auf eine Kaution ändert nichts an Selbstbehalt, Schäden und sonstigen Nachbelastungen.</p></article>
-    <article><span>Selbstbehalt</span><strong>CHF 2’000.–</strong><p>Der Versicherungs-Selbstbehalt beträgt CHF 2’000.– pro Schadenfall. Es gilt keine Altersstaffelung.</p></article>
-    <article><span>Bussen / Blitzer</span><strong>Kunde trägt Kosten</strong><p>Verkehrs-, Park- und Behördenkosten trägt der verantwortliche Fahrer; zusätzlich CHF 50 Bearbeitungsgebühr pro Behördenfall.</p></article>
+<!-- PREISRECHNER -->
+<section class="section dark" id="preise">
+  <div class="wrap">
+    <div class="eyebrow">Preisrechner</div>
+    <h2 class="title">PREIS<br>BERECHNEN<span class="g">.</span></h2>
+    <p class="sub">Transparente Tarife inkl. Kilometer – keine Kaution, persönlicher Service.</p>
+    <div class="calc">
+      <div class="calc-left">
+        <h3 class="calc-h">Kategorie</h3>
+        <div class="seg" id="cat">
+          <button class="opt active" data-cat="wd"><b>Unter der Woche</b><span>Mo – Do</span></button>
+          <button class="opt" data-cat="we"><b>Wochenende</b><span>Fr 17:00 – So 23:59</span></button>
+        </div>
+        <h3 class="calc-h">Mietdauer</h3>
+        <div class="durs" id="durs"></div>
+      </div>
+      <div class="calc-right card">
+        <div class="tot-label">Gesamtpreis</div>
+        <div class="tot" id="tot">CHF 109</div>
+        <div class="tot-sub" id="totSub">2 Stunden · 100 km inklusive</div>
+        <ul class="incl">
+          <li>Keine Kaution</li>
+          <li>Persönliche Übergabe</li>
+          <li>Zusatzkilometer CHF 1.20 / km</li>
+          <li>Zahlung per TWINT, bar oder Überweisung</li>
+        </ul>
+        <a class="btn gold full" id="calcWa" href="#" target="_blank" rel="noopener">Anfrage via WhatsApp</a>
+        <a class="btn ghost full" id="calcForm" href="#anfrage">Anfrage per Formular</a>
+        <p class="fine">Preise in CHF. Selbstbehalt CHF 2'000.– pro Schadenfall.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section request" id="anfrage">
-  <div class="request-copy">
-    <p class="eyebrow">MIETANFRAGE</p>
-    <h2>Dein Fahrerlebnis beginnt hier.</h2>
-    <p>Sende uns deinen Wunschzeitraum. Wir prüfen die Anfrage persönlich und melden uns mit einer Bestätigung oder Alternative.</p>
-    <div class="request-facts">
-      <div><strong>CHF 0.90</strong><span>pro Zusatzkilometer</span></div>
-      <div><strong>10 Min. Kulanz</strong><span>danach Verspätungsgebühr gemäss Staffel</span></div>
-      <div><strong>Pflichtbestätigung</strong><span>AGB & Bedingungen</span></div>
+<!-- INFOS -->
+<section class="section" id="infos">
+  <div class="wrap">
+    <div class="eyebrow">Wichtige Informationen</div>
+    <h2 class="title">TRANSPARENT<br>VOR DER FAHRT<span class="g">.</span></h2>
+    <div class="infos">
+      <article class="card info reveal"><b>18+</b><h3>Mindestalter</h3><p>Ab 18 Jahren. Gültiger Führerschein und Ausweis im Original.</p></article>
+      <article class="card info reveal"><b>0.-</b><h3>Keine Kaution</h3><p>Kein Geld blockiert – du zahlst nur deinen Tarif.</p></article>
+      <article class="card info reveal"><b>2'000</b><h3>Selbstbehalt</h3><p>CHF 2'000.– pro Schadenfall, ohne Altersstaffelung.</p></article>
+      <article class="card info reveal"><b>1.20</b><h3>Zusatz-km</h3><p>CHF 1.20 pro Kilometer über dem inkludierten Kontingent.</p></article>
+      <article class="card info reveal"><b>98</b><h3>Tank</h3><p>Rückgabe mit gleichem Tankstand, nur Super Plus 98.</p></article>
+      <article class="card info reveal"><b>TWINT</b><h3>Zahlung</h3><p>TWINT, bar oder Überweisung (im Voraus nach Bestätigung).</p></article>
+    </div>
+    <p class="note">Nicht erlaubt: Drifts, Burnouts, Rennen, Rennstrecke, missbräuchliche Launch-Control, Rauchen und Dampfen. Ausland nur mit ausdrücklicher Freigabe. Alle Details in den <a href="mietbedingungen.html">Mietbedingungen</a> und <a href="agb.html">AGB</a>.</p>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="section dark" id="social">
+  <div class="wrap social">
+    <div class="phone reveal">
+      <video id="reel" src="assets/m4-nacht.mp4" poster="assets/m4-nacht.jpg" muted loop playsinline preload="none"></video>
+      <button class="reel-sound" id="reelSound" type="button" aria-label="Ton einschalten">Ton an</button>
+    </div>
+    <div class="social-text">
+      <div class="eyebrow">Social Media</div>
+      <h2 class="title">HEAR<br>THE BEAST<span class="g">.</span></h2>
+      <p class="sub">Folge uns für neue Videos, Ausfahrten und Verfügbarkeiten.</p>
+      <div class="social-btns">
+        <a class="btn gold" href="https://www.instagram.com/ssprestigecars.ch/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn ghost" href="https://www.tiktok.com/@ssprestigecars.ch" target="_blank" rel="noopener">TikTok</a>
+      </div>
     </div>
   </div>
-  <form id="requestForm">
-    <div class="form-grid">
-      <label>Name<input id="requestName" name="Name" required></label>
-      <label>Telefon<input id="requestPhone" name="Telefon" required></label>
-      <label>E-Mail<input id="requestEmail" type="email" name="E-Mail" required></label>
-      <label>Tarif<select id="requestTariff" name="Tarif"><option>2 Stunden</option><option>3 Stunden</option><option>4 Stunden</option><option>5 Stunden</option><option>6 Stunden</option><option>12 Stunden</option><option>24 Stunden</option><option>48 Stunden</option><option>Wochenend-Paket</option><option>7 Tage</option></select></label>
-      <label>Von<input id="requestFrom" type="datetime-local" name="Von" required></label>
-      <label>Bis<input id="requestTo" type="datetime-local" name="Bis" required></label>
-      <label class="full">Nachricht<textarea id="requestMessage" name="Nachricht" rows="4"></textarea></label>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap narrow">
+    <div class="eyebrow">Häufige Fragen</div>
+    <h2 class="title">FAQ<span class="g">.</span></h2>
+    <div class="faq">
+      <details><summary>Wie kann ich den BMW M4 mieten?</summary><p>Am schnellsten per WhatsApp oder über das Anfrageformular. Schick uns deinen Wunschzeitraum und Tarif – wir prüfen die Anfrage persönlich und melden uns mit einer Bestätigung oder Alternative.</p></details>
+      <details><summary>Wie alt muss ich sein?</summary><p>Du musst mindestens 18 Jahre alt sein und einen gültigen Führerschein sowie einen Ausweis im Original vorweisen.</p></details>
+      <details><summary>Wird eine Kaution verlangt?</summary><p>Nein. Bei SS Prestige Cars gibt es keine Kaution.</p></details>
+      <details><summary>Wie viele Kilometer sind inklusive?</summary><p>Das hängt vom Tarif ab – von 100 km (2 Stunden) bis 1'500 km (7 Tage). Zusätzliche Kilometer kosten CHF 1.20 pro km und werden bei der Rückgabe abgerechnet.</p></details>
+      <details><summary>Was gilt als Wochenende?</summary><p>Der Wochenendtarif gilt von Freitag 17:00 bis Sonntag 23:59. Montag bis Donnerstag gilt der Tarif unter der Woche.</p></details>
+      <details><summary>Wie kann ich bezahlen?</summary><p>Per TWINT, bar oder Banküberweisung. Eine Überweisung erfolgt im Voraus nach der Bestätigung.</p></details>
+      <details><summary>Was passiert bei einem Schaden?</summary><p>Pro Schadenfall gilt ein Selbstbehalt von CHF 2'000.–. Nicht versicherte Schäden können dem Verursacher voll belastet werden. Vorschäden werden bei der Übergabe gemeinsam dokumentiert.</p></details>
+      <details><summary>Was passiert, wenn ich zu spät zurückkomme?</summary><p>Bis 10 Min. gilt Kulanz (CHF 0). Danach 11–30 Min. CHF 40, 31–60 Min. CHF 60, ab 61 Min. zusätzlich CHF 60 je angefangene Stunde.</p></details>
+      <details><summary>Wo findet die Übergabe statt?</summary><p>In Bern und Umgebung, nach Terminvereinbarung. Der genaue Übergabeort wird bei der Bestätigung festgelegt.</p></details>
+      <details><summary>Darf ich ins Ausland fahren?</summary><p>Nur mit ausdrücklicher Freigabe durch SS Prestige Cars.</p></details>
     </div>
-    <div class="legal-confirmations" aria-label="Rechtliche Bestätigungen">
-      <label class="legal-check">
-        <input class="legal-required" type="checkbox" id="acceptTerms" required>
-        <span>Ich habe die <a href="agb.html" target="_blank">AGB</a> und <a href="mietbedingungen.html" target="_blank">Mietbedingungen</a> gelesen und akzeptiere diese.</span>
-      </label>
-      <label class="legal-check">
-        <input class="legal-required" type="checkbox" id="acceptCancellation" required>
-        <span>Ich habe die <a href="stornierung.html" target="_blank">Reservierungs- und Stornierungsbedingungen</a> gelesen und akzeptiere diese.</span>
-      </label>
-      <label class="legal-check">
-        <input class="legal-required" type="checkbox" id="acceptPrivacy" required>
-        <span>Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> und das <a href="impressum.html" target="_blank">Impressum</a> gelesen und zur Kenntnis genommen.</span>
-      </label>
-      <p class="legal-note">Die Anfrage kann erst gesendet werden, wenn alle Pflichtbestätigungen gesetzt sind.</p>
+  </div>
+</section>
+
+<!-- ANFRAGE -->
+<section class="section dark" id="anfrage">
+  <div class="wrap request">
+    <div class="req-text" id="kontakt">
+      <div class="eyebrow">Mietanfrage</div>
+      <h2 class="title">DEIN<br>FAHRERLEBNIS<br>BEGINNT HIER<span class="g">.</span></h2>
+      <p class="sub">Sende uns deinen Wunschzeitraum. Wir prüfen die Anfrage persönlich und melden uns mit einer Bestätigung oder Alternative.</p>
+      <div class="contact">
+        <a class="c-item" href="https://wa.me/41797862408?text=Hallo%20SS%20Prestige%20Cars%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Miete." target="_blank" rel="noopener"><span>WhatsApp</span><b>079 786 24 08</b></a>
+        <a class="c-item" href="tel:+41797862408"><span>Telefon</span><b>079 786 24 08</b></a>
+        <a class="c-item" href="mailto:ssprestigecars.ch@gmail.com"><span>E-Mail</span><b>ssprestigecars.ch@gmail.com</b></a>
+        <div class="c-item"><span>Standort</span><b>Bern &amp; Umgebung</b></div>
+      </div>
     </div>
-    <div class="request-buttons">
-      <button class="button" id="submitRequest" type="submit" disabled>Anfrage per E-Mail senden</button>
-      <a class="whatsapp disabled" id="dynamicWhatsApp" href="#" aria-disabled="true">Über WhatsApp anfragen</a>
-    </div>
-    <p class="form-status" id="formStatus" aria-live="polite"></p>
-  </form>
+    <form class="card form" id="form" novalidate>
+      <div class="row2">
+        <label>Name<input id="fName" required autocomplete="name"></label>
+        <label>Telefon<input id="fPhone" type="tel" required autocomplete="tel"></label>
+      </div>
+      <label>E-Mail<input id="fMail" type="email" required autocomplete="email"></label>
+      <label>Tarif<select id="fTarif" required></select></label>
+      <div class="row2">
+        <label>Von<input id="fFrom" type="datetime-local" required></label>
+        <label>Bis<input id="fTo" type="datetime-local" required></label>
+      </div>
+      <label>Nachricht (optional)<textarea id="fMsg" rows="3"></textarea></label>
+      <div class="checks">
+        <label class="chk"><input type="checkbox" class="legal"> <span>Ich akzeptiere die <a href="agb.html" target="_blank">AGB</a> und <a href="mietbedingungen.html" target="_blank">Mietbedingungen</a>.</span></label>
+        <label class="chk"><input type="checkbox" class="legal"> <span>Ich akzeptiere die <a href="stornierung.html" target="_blank">Reservierungs- und Stornierungsbedingungen</a>.</span></label>
+        <label class="chk"><input type="checkbox" class="legal"> <span>Ich habe <a href="datenschutz.html" target="_blank">Datenschutz</a> und <a href="impressum.html" target="_blank">Impressum</a> zur Kenntnis genommen.</span></label>
+      </div>
+      <div class="row2 btns">
+        <button class="btn gold full" type="button" id="sendWa">Via WhatsApp senden</button>
+        <button class="btn ghost full" type="button" id="sendMail">Per E-Mail senden</button>
+      </div>
+      <p class="status" id="status" role="status"></p>
+      <p class="fine">Die Verfügbarkeit wird nicht öffentlich angezeigt. Jede Anfrage wird persönlich geprüft.</p>
+    </form>
+  </div>
 </section>
 </main>
 
-<footer>
-  <div class="footer-brand"><img src="assets/logo.png" alt="SS Prestige Cars"><div><strong>SS PRESTIGE CARS</strong><p>Luxury. Performance. Prestige.</p><small>Übergabe nach Terminvereinbarung in Bern und Umgebung.</small></div></div>
-  <div class="footer-links"><a href="https://wa.me/41797862408" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/ssprestigecars.ch/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@ssprestigecars.ch" target="_blank" rel="noopener">TikTok</a><a href="mailto:ssprestigecars.ch@gmail.com">E-Mail</a></div>
-  <div class="footer-links"><a href="agb.html">AGB</a><a href="mietbedingungen.html">Mietbedingungen</a><a href="stornierung.html">Stornierung</a><a href="datenschutz.html">Datenschutz</a><a href="impressum.html">Impressum</a></div>
-  <p class="copyright">© 2026 SS Prestige Cars. Alle Rechte vorbehalten.</p>
+<footer class="footer">
+  <div class="wrap foot">
+    <div class="f-brand">
+      <img src="assets/logo.png" alt="SS Prestige Cars" width="72" height="72">
+      <p>Sportwagen mieten in Bern – BMW M4 Competition G82. Keine Kaution, ab 18 Jahren, persönlicher Service.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="#fahrzeug">Fahrzeug</a><a href="#galerie">Galerie</a><a href="#videos">Videos</a><a href="#preise">Preisrechner</a><a href="#faq">FAQ</a><a href="#anfrage">Mietanfrage</a>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <a href="tel:+41797862408">079 786 24 08</a><a href="mailto:ssprestigecars.ch@gmail.com">ssprestigecars.ch@gmail.com</a>
+      <a href="https://www.instagram.com/ssprestigecars.ch/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@ssprestigecars.ch" target="_blank" rel="noopener">TikTok</a>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <a href="agb.html">AGB</a><a href="mietbedingungen.html">Mietbedingungen</a><a href="stornierung.html">Stornierung</a><a href="datenschutz.html">Datenschutz</a><a href="impressum.html">Impressum</a>
+    </div>
+  </div>
+  <div class="copy">© 2026 SS Prestige Cars · Luxury. Performance. Prestige.</div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/41797862408?text=Hallo%20SS%20Prestige%20Cars%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Miete." target="_blank" rel="noopener" aria-label="WhatsApp öffnen">WA</a>
+<a class="m-book" id="mBook" href="#anfrage">Jetzt buchen <span>ab CHF 109</span></a>
+<a class="wa-float" href="https://wa.me/41797862408?text=Hallo%20SS%20Prestige%20Cars%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Miete." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.8 1.5 7 0 12.7-5.7 12.7-12.6S23 3 16 3zm0 23.2c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.3 1.1 1.2-4.2-.3-.4c-1.1-1.7-1.6-3.6-1.6-5.5C5.3 9.8 10.1 5 16 5s10.7 4.8 10.7 10.6S21.9 26.2 16 26.2zm5.9-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2.1-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8 0 1.6 1.2 3.2 1.4 3.4.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.7-.4z"/></svg>
+</a>
 
-<dialog id="lightbox">
-  <button id="closeLightbox" aria-label="Schliessen">×</button>
-  <img id="lightboxImage" alt="Vergrösserte Fahrzeugansicht">
-</dialog>
+<dialog class="modal" id="lightbox"><button class="x" data-close aria-label="Schliessen">×</button><img id="lbImg" alt=""></dialog>
+<dialog class="modal video" id="soundModal"><button class="x" data-close aria-label="Schliessen">×</button><video id="soundVideo" src="assets/soundcheck.mp4" playsinline controls preload="none"></video><audio id="soundAudio" src="assets/auspuff-sound.mp3" preload="none"></audio></dialog>
 
-<script src="script.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
