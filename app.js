@@ -111,14 +111,24 @@ $$('dialog').forEach(d => {
   d.addEventListener('close', () => { sv.pause(); sa.pause(); });
 });
 
+// iPhone: Video, das einmal im Vollbild lief, nicht mehr automatisch starten –
+// sonst springt es beim Scrollen jedes Mal wieder in den Vollbildmodus
+const autoplay = v => { if (!v.dataset.noAuto) v.play().catch(() => {}); };
+$$('video').forEach(v => {
+  v.setAttribute('webkit-playsinline', '');
+  v.addEventListener('webkitbeginfullscreen', () => { v.dataset.noAuto = 1; });
+  v.addEventListener('webkitendfullscreen', () => { v.dataset.noAuto = 1; v.pause(); });
+});
+document.addEventListener('fullscreenchange', () => { const f = document.fullscreenElement; if (f && f.tagName === 'VIDEO') f.dataset.noAuto = 1; });
+
 // Reel: abspielen wenn sichtbar, Ton per Knopf
 const reel = $('#reel'), rs = $('#reelSound');
-new IntersectionObserver(([e]) => { if (e.isIntersecting) reel.play().catch(() => {}); else reel.pause(); }, { threshold: .4 }).observe(reel);
+new IntersectionObserver(([e]) => { if (e.isIntersecting) autoplay(reel); else reel.pause(); }, { threshold: .4 }).observe(reel);
 rs.addEventListener('click', () => { reel.muted = !reel.muted; rs.textContent = reel.muted ? 'Ton an' : 'Ton aus'; if (!reel.muted) reel.play(); });
 
 // Videos: play muted while visible, button toggles sound (only one with sound at a time)
 const vCards = $$('.v-card');
-const vObs = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: .5 });
+const vObs = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) autoplay(v); else v.pause(); }), { threshold: .5 });
 vCards.forEach(c => {
   const v = $('video', c), b = $('.v-sound', c);
   vObs.observe(v);
