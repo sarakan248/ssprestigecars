@@ -113,7 +113,14 @@ $$('dialog').forEach(d => {
 
 // iPhone: Video, das einmal im Vollbild lief, nicht mehr automatisch starten –
 // sonst springt es beim Scrollen jedes Mal wieder in den Vollbildmodus
-const autoplay = v => { if (!v.dataset.noAuto) v.play().catch(() => {}); };
+// In-App-Browser (TikTok, Instagram, Facebook, Snapchat) erlauben kein Abspielen in der Seite:
+// dort jedes play() = Vollbild → kein Autoplay, stattdessen normale Video-Steuerung
+const inApp = /musical_ly|BytedanceWebview|TikTok|trill|Instagram|FBAN|FBAV|Snapchat/i.test(navigator.userAgent);
+if (inApp) {
+  document.documentElement.classList.add('in-app');
+  $$('#reel, .v-card video').forEach(v => { v.controls = true; v.muted = false; v.preload = 'metadata'; });
+}
+const autoplay = v => { if (!inApp && !v.dataset.noAuto) v.play().catch(() => {}); };
 $$('video').forEach(v => {
   v.setAttribute('webkit-playsinline', '');
   v.addEventListener('webkitbeginfullscreen', () => { v.dataset.noAuto = 1; });
