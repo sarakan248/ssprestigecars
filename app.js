@@ -88,6 +88,7 @@ function send(via) {
   status.textContent = err || (via === 'wa' ? 'WhatsApp wird geöffnet …' : 'E-Mail-Programm wird geöffnet …');
   status.className = 'status ' + (err ? 'err' : 'ok');
   if (err) return;
+  track('generate_lead', { form: 'mietanfrage', method: via === 'wa' ? 'whatsapp' : 'email' });
   if (via === 'wa') window.open(`https://wa.me/${WA}?text=${encodeURIComponent(body())}`, '_blank', 'noopener');
   else location.href = `mailto:${MAIL}?subject=${encodeURIComponent('Mietanfrage BMW M4 Competition G82 – SS Prestige Cars')}&body=${encodeURIComponent(body())}`;
 }
@@ -171,3 +172,32 @@ if (mBook) {
   const form = $('#anfrage');
   if (form) new IntersectionObserver(([e]) => { atForm = e.isIntersecting; upd(); }, { threshold: .15 }).observe(form);
 }
+
+// Google Analytics 4 – lädt NUR nach Zustimmung im Cookie-Banner.
+// Events: generate_lead (Mietanfrage-Formular abgeschickt), whatsapp_click / phone_click / email_click (Kontaktaktionen)
+function track(name, params) { if (window.gtag) gtag('event', name, params || {}); }
+(() => {
+  const GA_ID = 'G-QB4J5HY3B6', KEY = 'ssp_cookie_consent';
+  const get = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+  const load = () => {
+    if (window.gtag) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date()); gtag('config', GA_ID);
+    const s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  };
+  if (get() === 'accepted') load();
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]'); if (!a) return;
+    const h = a.getAttribute('href'), where = { link_location: a.closest('section, footer, header')?.id || a.closest('footer') && 'footer' || 'seite' };
+    if (h.startsWith('https://wa.me/')) track('whatsapp_click', where);
+    else if (h.startsWith('tel:')) track('phone_click', where);
+    else if (h.startsWith('mailto:')) track('email_click', where);
+  });
+  const cb = $('#cookieBanner');
+  if (cb && !get()) setTimeout(() => cb.classList.add('show'), 1200);
+  const set = v => { try { localStorage.setItem(KEY, v); } catch (e) {} cb.classList.remove('show'); if (v === 'accepted') load(); };
+  cb?.querySelector('[data-cookie="accept"]').addEventListener('click', () => set('accepted'));
+  cb?.querySelector('[data-cookie="decline"]').addEventListener('click', () => set('declined'));
+})();
