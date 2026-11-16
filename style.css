@@ -395,5 +395,6 @@ html,body{overflow-x:hidden;max-width:100%}
 .h2-price b{white-space:nowrap}
 @media (max-width:400px){ .h2-price b{font-size:36px} .h2-name{font-size:21px} }
 
-/* In-App-Browser: eigene Ton-Knöpfe ausblenden, native Steuerung übernimmt */
+/* In-App-Browser: Videos nicht antippbar (sonst Vollbild), Ton-Knöpfe aus */
 .in-app .reel-sound{display:none}
+.in-app #reel,.in-app .v-card video{pointer-events:none}
