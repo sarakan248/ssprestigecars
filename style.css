@@ -180,6 +180,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a.c-item:hover{border-color:var(--gold)}
 .c-item span{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
 .c-item b{font-size:15px;overflow-wrap:anywhere}
+.c-review b{color:var(--gold2)}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:48px}
+.rv-card{padding:28px;display:flex;flex-direction:column;gap:16px}
+.rv-stars{color:var(--gold2);font-size:20px;letter-spacing:3px}
+.rv-card p{margin:0;line-height:1.65;color:#e5e5e5;flex:1}
+.rv-card footer{display:flex;flex-direction:column;gap:2px;font-size:14px}
+.rv-card footer span{color:var(--muted);font-size:12px;letter-spacing:1px}
+.rv-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+@media (max-width:520px){.rv-btns .btn{flex:1 1 100%}}
 .form{padding:32px;display:grid;gap:16px}
 .form label{display:grid;gap:6px;font-size:13px;font-weight:600;color:#d4d4d4}
 .form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23d9a530' stroke-width='2'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 14px center!important;padding-right:38px!important}

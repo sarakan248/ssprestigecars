@@ -194,7 +194,10 @@ function track(name, params) { if (window.gtag) gtag('event', name, params || {}
     if (h.startsWith('https://wa.me/')) track('whatsapp_click', where);
     else if (h.startsWith('tel:')) track('phone_click', where);
     else if (h.startsWith('mailto:')) track('email_click', where);
+    else if (h.includes('g.page/r/')) track('review_click', where);
   });
+  const rv = $('#bewertungen');
+  if (rv && rv.querySelector('.rv-card')) rv.hidden = false;
   const cb = $('#cookieBanner');
   if (cb && !get()) setTimeout(() => cb.classList.add('show'), 1200);
   const set = v => { try { localStorage.setItem(KEY, v); } catch (e) {} cb.classList.remove('show'); if (v === 'accepted') load(); };
