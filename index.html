@@ -355,6 +355,7 @@
         <label>Von<input id="fFrom" type="datetime-local" required></label>
         <label>Bis<input id="fTo" type="datetime-local" required></label>
       </div>
+      <label>Rabattcode (optional)<input id="fCode" autocomplete="off" autocapitalize="characters" placeholder="z. B. aus dem Newsletter"></label>
       <label>Nachricht (optional)<textarea id="fMsg" rows="3"></textarea></label>
       <div class="checks">
         <label class="chk"><input type="checkbox" class="legal"> <span>Ich akzeptiere die <a href="agb.html" target="_blank">AGB</a> und <a href="mietbedingungen.html" target="_blank">Mietbedingungen</a>.</span></label>
@@ -368,6 +369,28 @@
       <p class="status" id="status" role="status"></p>
       <p class="fine">Die Verfügbarkeit wird nicht öffentlich angezeigt. Jede Anfrage wird persönlich geprüft.</p>
     </form>
+  </div>
+</section>
+<section class="nl-band" id="club">
+  <div class="wrap">
+    <div class="nlb-card reveal">
+      <div class="nlb-text">
+        <div class="eyebrow">SSPRESTIGECARS Club</div>
+        <h2 class="nlb-title"><span>10%</span> auf deine erste Miete<span class="g">.</span></h2>
+        <p>Abonniere unseren Newsletter: Du bekommst deinen persönlichen Rabattcode per E-Mail – plus exklusive Deals 1–2× im Monat.</p>
+      </div>
+      <div class="nlb-side">
+        <form id="nlbForm" novalidate>
+          <input name="website" class="nlb-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="email" required autocomplete="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse">
+          <button class="btn gold" type="submit">Rabatt sichern</button>
+        </form>
+        <p class="nl-status" role="status"></p>
+        <p class="nl-fine">Abmeldung jederzeit mit einem Klick. Infos in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+        <div class="nlb-done" hidden><b>Check dein Postfach ✓</b><span>Bestätige deine Adresse mit einem Klick – danach kommt dein 10%-Code. Nichts da? Schau im Ordner Werbung oder Spam nach.</span></div>
+        <div class="nlb-member" hidden><b>Du bist im Club ✓</b><span>Deine Deals kommen per E-Mail. Deinen 10%-Code findest du in der Willkommens-Mail.</span></div>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -404,6 +427,38 @@
 <dialog class="modal" id="lightbox"><button class="x" data-close aria-label="Schliessen">×</button><img id="lbImg" alt=""></dialog>
 <dialog class="modal video" id="soundModal"><button class="x" data-close aria-label="Schliessen">×</button><video id="soundVideo" src="assets/CA333E3C-2557-44D6-88B8-CCC1BAD08603.mp4" playsinline webkit-playsinline controls preload="none"></video><audio id="soundAudio" src="assets/auspuff-sound.mp3" preload="none"></audio></dialog>
 
+<dialog class="modal nl-modal" id="nlModal" aria-labelledby="nlTitle">
+  <button class="x" data-close aria-label="Schliessen">×</button>
+  <div class="nl-card">
+    <div class="nl-step" id="nlForm">
+      <div class="nl-eyebrow">SSPRESTIGECARS Club</div>
+      <h2 id="nlTitle"><span>10%</span> auf deine erste Miete</h2>
+      <p>Trag dich in unseren Newsletter ein und erhalte deinen Rabattcode sofort per E-Mail – plus exklusive Deals 1–2× im Monat.</p>
+      <form id="nlSubmit" novalidate>
+        <input id="nlHp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+        <input id="nlMail" type="email" required autocomplete="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse">
+        <button class="btn gold" type="submit">Rabatt sichern</button>
+      </form>
+      <p class="nl-status" id="nlStatus" role="status"></p>
+      <p class="nl-fine">Abmeldung jederzeit mit einem Klick. Infos in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <button class="nl-no" type="button" data-close>Nein danke</button>
+    </div>
+    <div class="nl-step" id="nlDone" hidden>
+      <div class="nl-eyebrow">Fast geschafft</div>
+      <h2>Check dein <span>Postfach</span></h2>
+      <p>Wir haben dir eine E-Mail geschickt. Bestätige deine Adresse mit einem Klick – danach kommt dein 10%-Code direkt zu dir.</p>
+      <p class="nl-fine">Nichts da? Schau im Ordner <b>Werbung</b> oder <b>Spam</b> nach.</p>
+      <button class="btn gold" type="button" data-close>Alles klar</button>
+    </div>
+    <div class="nl-step" id="nlOk" hidden>
+      <div class="nl-eyebrow">Willkommen im Club</div>
+      <h2>Anmeldung <span>bestätigt</span></h2>
+      <p>Danke! Dein 10%-Gutschein ist unterwegs und kommt in etwa <b>1 Minute</b> per E-Mail – mit Code und QR-Code für die Abholung.</p>
+      <p class="nl-fine" style="margin-bottom:18px">Nichts da? Schau im Ordner <b>Werbung</b> oder <b>Spam</b> nach.</p>
+      <button class="btn gold" type="button" data-close>Alles klar</button>
+    </div>
+  </div>
+</dialog>
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie-Hinweis">
   <p>Wir verwenden Cookies (Google Analytics), um zu verstehen, wie unsere Website genutzt wird. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
   <div class="cookie-btns"><button class="btn ghost" type="button" data-cookie="decline">Ablehnen</button><button class="btn gold" type="button" data-cookie="accept">Akzeptieren</button></div>

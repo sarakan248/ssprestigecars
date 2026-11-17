@@ -82,7 +82,7 @@ function check() {
   if (!$$('.legal').every(c => c.checked)) return 'Bitte alle Pflichtbestätigungen setzen.';
   return '';
 }
-const body = () => `Hallo SS Prestige Cars,\n\nich möchte eine Mietanfrage für den BMW M4 Competition G82 senden.\n\nName: ${$(f.name).value}\nTelefon: ${$(f.phone).value}\nE-Mail: ${$(f.mail).value}\nTarif: ${$(f.tarif).value}\nVon: ${fmt($(f.from).value)}\nBis: ${fmt($(f.to).value)}\nNachricht: ${$('#fMsg').value || '-'}\n\nIch bestätige, dass ich AGB, Mietbedingungen sowie Reservierungs- und Stornierungsbedingungen gelesen und akzeptiert und Datenschutzerklärung sowie Impressum zur Kenntnis genommen habe.`;
+const body = () => `Hallo SS Prestige Cars,\n\nich möchte eine Mietanfrage für den BMW M4 Competition G82 senden.\n\nName: ${$(f.name).value}\nTelefon: ${$(f.phone).value}\nE-Mail: ${$(f.mail).value}\nTarif: ${$(f.tarif).value}\nVon: ${fmt($(f.from).value)}\nBis: ${fmt($(f.to).value)}\nNachricht: ${$('#fMsg').value || '-'}${$('#fCode').value.trim() ? `\nRabattcode: ${$('#fCode').value.trim().toUpperCase()}` : ''}\n\nIch bestätige, dass ich AGB, Mietbedingungen sowie Reservierungs- und Stornierungsbedingungen gelesen und akzeptiert und Datenschutzerklärung sowie Impressum zur Kenntnis genommen habe.`;
 function send(via) {
   const err = check();
   status.textContent = err || (via === 'wa' ? 'WhatsApp wird geöffnet …' : 'E-Mail-Programm wird geöffnet …');
@@ -106,7 +106,7 @@ $('#soundBtn').addEventListener('click', () => {
   sv.play().catch(() => sa.play().catch(() => {}));
 });
 sv.addEventListener('error', () => { sm.close(); sa.play().catch(() => {}); });
-const closeModal = d => { d.close(); };
+const closeModal = d => { if (!d.classList.contains('nl-modal') || matchMedia('(prefers-reduced-motion: reduce)').matches) return d.close(); d.classList.add('closing'); setTimeout(() => { d.classList.remove('closing'); d.close(); }, 280); };
 $$('dialog').forEach(d => {
   d.addEventListener('click', e => { if (e.target === d || e.target.hasAttribute('data-close')) closeModal(d); });
   d.addEventListener('close', () => { sv.pause(); sa.pause(); });
@@ -200,7 +200,67 @@ function track(name, params) { if (window.gtag) gtag('event', name, params || {}
   if (rv && rv.querySelector('.rv-card')) rv.hidden = false;
   const cb = $('#cookieBanner');
   if (cb && !get()) setTimeout(() => cb.classList.add('show'), 1200);
-  const set = v => { try { localStorage.setItem(KEY, v); } catch (e) {} cb.classList.remove('show'); if (v === 'accepted') load(); };
+  const set = v => { try { localStorage.setItem(KEY, v); } catch (e) {} cb.classList.remove('show'); if (v === 'accepted') load(); document.dispatchEvent(new Event('cookiedone')); };
   cb?.querySelector('[data-cookie="accept"]').addEventListener('click', () => set('accepted'));
   cb?.querySelector('[data-cookie="decline"]').addEventListener('click', () => set('declined'));
+})();
+
+// Newsletter-Popup: 10% auf die erste Miete. Erscheint beim Öffnen der Seite (nach dem Cookie-Banner),
+// nie mehr nach der Anmeldung; weggeklickt → erst beim nächsten Besuch wieder (nicht beim Neuladen/Seitenwechsel).
+(() => {
+  // Gutschein-System: erstellt pro E-Mail einen eigenen 10%-Code und startet die Brevo-Bestätigung
+  const NEWSLETTER_API = location.hostname === 'localhost' ? 'http://localhost:8090/api/newsletter' : 'https://ssp-gutscheine.exoramedia.ch/api/newsletter';
+  const KEY = 'ssp_newsletter', m = $('#nlModal');
+  if (!m) return;
+  const st = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
+  const save = o => { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {} };
+  // Rückkehr aus der Bestätigungs-Mail (Brevo leitet auf /?abonniert): Hinweis zeigen, dass der Code gleich kommt
+  if (new URLSearchParams(location.search).has('abonniert')) {
+    save({ subscribed: true });
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}
+    $('#nlForm').hidden = true; $('#nlOk').hidden = false;
+    setTimeout(() => { m.showModal(); if (window.gtag) gtag('event', 'newsletter_confirmed'); }, 400);
+  }
+  const seen = () => { try { return sessionStorage.getItem('ssp_nl_seen'); } catch (e) { return null; } };
+  const due = !st().subscribed && !seen();
+  let shown = false;
+  const show = () => { if (shown || !due || document.querySelector('dialog[open]')) return; shown = true; m.showModal(); try { sessionStorage.setItem('ssp_nl_seen', '1'); } catch (e) {} gtagEv('newsletter_popup_view'); };
+  const gtagEv = (n, p) => { if (window.gtag) gtag('event', n, p || {}); };
+  const later = () => setTimeout(show, 3500);
+  if ($('#cookieBanner') && !(() => { try { return localStorage.getItem('ssp_cookie_consent'); } catch (e) { return 'x'; } })())
+    document.addEventListener('cookiedone', () => setTimeout(show, 800), { once: true });
+  else later();
+  m.addEventListener('cancel', e => { e.preventDefault(); closeModal(m); });
+  // Newsletter-Streifen (#club): gleiche Anmeldung wie das Popup
+  const band = $('#nlbForm');
+  if (band) {
+    const box = band.parentElement, out = box.querySelector('.nl-status');
+    const showState = sel => { band.hidden = true; out.hidden = true; box.querySelector('.nl-fine').hidden = true; box.querySelector(sel).hidden = false; };
+    if (st().subscribed) showState('.nlb-member');
+    band.addEventListener('submit', async e => {
+      e.preventDefault();
+      const mail = band.querySelector('input[type=email]'), btn = band.querySelector('button');
+      if (!mail.checkValidity()) { out.textContent = 'Bitte gib eine gültige E-Mail-Adresse ein.'; out.className = 'nl-status err'; return; }
+      btn.disabled = true; out.textContent = 'Wird gesendet …'; out.className = 'nl-status';
+      try {
+        const r = await fetch(NEWSLETTER_API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: mail.value.trim(), website: band.querySelector('.nlb-hp').value }) });
+        if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || 'Fehler');
+        save({ subscribed: true }); gtagEv('sign_up', { method: 'newsletter_section' });
+        showState('.nlb-done');
+      } catch (err) { out.textContent = err.message && err.message !== 'Fehler' && err.message !== 'Failed to fetch' ? err.message : 'Das hat nicht geklappt – bitte später nochmals versuchen.'; out.className = 'nl-status err'; btn.disabled = false; }
+    });
+  }
+  $('#nlSubmit').addEventListener('submit', async e => {
+    e.preventDefault();
+    const mail = $('#nlMail'), out = $('#nlStatus'), btn = $('#nlSubmit button');
+    if (!mail.checkValidity()) { out.textContent = 'Bitte gib eine gültige E-Mail-Adresse ein.'; out.className = 'nl-status err'; return; }
+    if (!NEWSLETTER_API) { out.textContent = 'Anmeldung ist bald verfügbar.'; out.className = 'nl-status err'; return; }
+    btn.disabled = true; out.textContent = 'Wird gesendet …'; out.className = 'nl-status';
+    try {
+      const r = await fetch(NEWSLETTER_API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: mail.value.trim(), website: $('#nlHp').value }) });
+      if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || 'Fehler');
+      save({ subscribed: true }); gtagEv('sign_up', { method: 'newsletter_popup' });
+      $('#nlForm').hidden = true; $('#nlDone').hidden = false;
+    } catch (err) { out.textContent = err.message && err.message !== 'Fehler' && err.message !== 'Failed to fetch' ? err.message : 'Das hat nicht geklappt – bitte später nochmals versuchen.'; out.className = 'nl-status err'; btn.disabled = false; }
+  });
 })();
