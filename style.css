@@ -185,8 +185,28 @@ a.c-item:hover{border-color:var(--gold)}
 .rv-card{padding:28px;display:flex;flex-direction:column;gap:16px}
 .rv-stars{color:var(--gold2);font-size:20px;letter-spacing:3px}
 .rv-card p{margin:0;line-height:1.65;color:#e5e5e5;flex:1}
-.rv-card footer{display:flex;flex-direction:column;gap:2px;font-size:14px}
-.rv-card footer span{color:var(--muted);font-size:12px;letter-spacing:1px}
+.rv-card footer{display:flex;align-items:center;gap:12px;font-size:14px}
+.rv-card footer div{display:flex;flex-direction:column;gap:2px}
+.rv-card footer div span{color:var(--muted);font-size:12px;letter-spacing:1px}
+.rv-av{width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-weight:800;font-size:16px;text-transform:uppercase}
+.rv-summary{display:inline-flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin-top:28px;padding:14px 22px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+.rv-summary b{font-size:28px;line-height:1;color:#fff}
+.rv-summary .rv-stars{font-size:18px}
+.rv-count{color:var(--muted);font-size:14px}
+.rv-g{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#4285f4;font-weight:800;font-size:17px;font-family:Arial,sans-serif}
+.rv-summary + .reviews{margin-top:28px}
+.links a[hidden]{display:none!important}
+@media (max-width:520px){.rv-summary{border-radius:18px;padding:14px 18px}}
+.rv-dots{display:none}
+@media (max-width:760px){
+  .reviews{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-left:-20px;margin-right:-20px;padding:0 20px 4px;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .reviews::-webkit-scrollbar{display:none}
+  .reviews .rv-card{flex:0 0 84%;scroll-snap-align:start}
+  .reviews .rv-card.reveal{opacity:1;transform:none}
+  .rv-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+  .rv-dots button{width:8px;height:8px;padding:0;border:0;border-radius:99px;background:#ffffff33;transition:width .25s,background .25s}
+  .rv-dots button.on{width:22px;background:var(--gold2)}
+}
 .rv-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 @media (max-width:520px){.rv-btns .btn{flex:1 1 100%}}
 .form{padding:32px;display:grid;gap:16px}

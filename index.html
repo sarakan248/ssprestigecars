@@ -64,7 +64,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261117b">
+<link rel="stylesheet" href="style.css?v=20261119c">
 </head>
 <body>
 
@@ -75,6 +75,7 @@
     <a href="#galerie">Galerie</a>
     <a href="#videos">Videos</a>
     <a href="#preise">Preise</a>
+    <a href="#bewertungen" id="navRv" hidden>Bewertungen</a>
     <a href="#faq">FAQ</a>
     <a href="#kontakt">Kontakt</a>
     <a class="btn gold small mobile-only" href="#anfrage">Jetzt buchen</a>
@@ -286,21 +287,20 @@
   </div>
 </section>
 
-<!-- BEWERTUNGEN: Der Bereich bleibt unsichtbar, bis mindestens eine <article class="rv-card"> eingetragen ist.
-     Neue Bewertung = Block unten kopieren, Text/Name/Datum ersetzen (nur echte Google-Bewertungen, wörtlich). -->
+<!-- BEWERTUNGEN: Die Bewertungen stehen in app.js in der Liste BEWERTUNGEN (dazu GOOGLE_SCHNITT/GOOGLE_ANZAHL).
+     Der Bereich bleibt unsichtbar, solange die Liste leer ist (nur echte Google-Bewertungen, wörtlich). -->
 <section class="section" id="bewertungen" hidden>
   <div class="wrap">
     <div class="eyebrow">Google Bewertungen</div>
     <h2 class="title">WAS FAHRER<br>SAGEN<span class="g">.</span></h2>
-    <div class="reviews" id="reviews">
-      <!--
-      <article class="card rv-card reveal">
-        <div class="rv-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        <p>„Text der Google-Bewertung“</p>
-        <footer><b>Vorname N.</b><span>Google · November 2026</span></footer>
-      </article>
-      -->
+    <div class="rv-summary" id="rvSummary" hidden>
+      <span class="rv-g" aria-hidden="true">G</span>
+      <b id="rvAvg"></b>
+      <span class="rv-stars" id="rvAvgStars"></span>
+      <span class="rv-count" id="rvCount"></span>
     </div>
+    <div class="reviews" id="reviews"></div>
+    <div class="rv-dots" id="rvDots"></div>
     <div class="rv-btns">
       <a class="btn gold" href="https://g.page/r/CcMs52rvH8cDEBM/review" target="_blank" rel="noopener">Bewertung schreiben</a>
       <a class="btn ghost" href="https://maps.google.com/?cid=272221415630384323" target="_blank" rel="noopener">Alle Bewertungen auf Google</a>
@@ -464,6 +464,6 @@
   <div class="cookie-btns"><button class="btn ghost" type="button" data-cookie="decline">Ablehnen</button><button class="btn gold" type="button" data-cookie="accept">Akzeptieren</button></div>
 </div>
 
-<script src="app.js?v=20261117b"></script>
+<script src="app.js?v=20261119c"></script>
 </body>
 </html>

@@ -16,8 +16,60 @@ const TARIFE = [
   ['Wochenend-Paket', 1000, null, 899],
   ['7 Tage', 1500, 1999, 1999],
 ];
+// Google-Bewertungen (echte Texte von Google übernehmen, neueste zuerst).
+// Format: { name: 'Vorname N.', sterne: 5, text: '…', datum: 'November 2026' }
+// Solange die Liste leer ist, bleibt der Abschnitt #bewertungen versteckt.
+const BEWERTUNGEN = [
+  { name: 'Eleyna S.', sterne: 5, datum: 'November 2026', text: 'Bin sehr zufrieden mit dem BMW M4. Be Hat alles super geklappt und der Kontakt war von Anfang an sehr angenehm. Auch der Service war top, freundlich und unkompliziert. Vielen Dank für alles, kann ich nur weiterempfehlen!' },
+  { name: 'Niron G.', sterne: 5, datum: 'November 2026', text: 'Top service, hatte sehr viel spass mit dem Auto' },
+  { name: 'Hamed A.', sterne: 5, datum: 'November 2026', text: 'Fahrspass pur!, und das noch bei so einem Preis. Werde bestimmt mehrmals das Auto mieten' },
+  { name: 'Exora Media', sterne: 5, datum: 'November 2026', text: 'Wirklich ein brutales auto und sehr netter kundenservice, nur weiter zu empfehlen!' },
+];
+// Schnitt und Anzahl wie im Google-Profil angezeigt (null = Zeile ausblenden)
+const GOOGLE_SCHNITT = 5.0; // z.B. 5.0
+const GOOGLE_ANZAHL = 5;    // z.B. 12
+
 const chf = n => "CHF " + n.toLocaleString('de-CH').replace(/[’,]/g, "'");
 const km = n => n.toLocaleString('de-CH').replace(/[’,]/g, "'") + ' km';
+
+// Bewertungen
+(() => {
+  const box = $('#reviews');
+  if (!box || !BEWERTUNGEN.length) return;
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const stars = n => '★'.repeat(Math.round(n)) + '☆'.repeat(5 - Math.round(n));
+  box.innerHTML = BEWERTUNGEN.map(r => `
+    <article class="card rv-card reveal">
+      <div class="rv-stars" aria-label="${r.sterne} von 5 Sternen">${stars(r.sterne)}</div>
+      <p>„${esc(r.text)}“</p>
+      <footer><span class="rv-av" aria-hidden="true">${esc(r.name.trim()[0] || '')}</span><div><b>${esc(r.name)}</b><span>Google · ${esc(r.datum)}</span></div></footer>
+    </article>`).join('');
+  if (GOOGLE_SCHNITT && GOOGLE_ANZAHL) {
+    $('#rvAvg').textContent = GOOGLE_SCHNITT.toFixed(1).replace('.', ',');
+    $('#rvAvgStars').textContent = stars(GOOGLE_SCHNITT);
+    $('#rvAvgStars').setAttribute('aria-label', GOOGLE_SCHNITT + ' von 5 Sternen');
+    $('#rvCount').textContent = GOOGLE_ANZAHL + (GOOGLE_ANZAHL === 1 ? ' Bewertung' : ' Bewertungen') + ' auf Google';
+    $('#rvSummary').hidden = false;
+  }
+  $('#bewertungen').hidden = false;
+  $('#navRv').hidden = false;
+  // Handy: Karten seitlich wischen, Punkte zeigen die Position
+  const dots = $('#rvDots'), cards = $$('.rv-card', box);
+  if (dots && cards.length > 1) {
+    dots.innerHTML = cards.map((_, i) => `<button type="button" aria-label="Bewertung ${i + 1}"></button>`).join('');
+    const btns = $$('button', dots);
+    const upd = () => {
+      const x = box.scrollLeft + 20;
+      let cur = 0;
+      cards.forEach((c, i) => { if (c.offsetLeft - box.offsetLeft <= x + c.offsetWidth / 2) cur = i; });
+      if (box.scrollLeft + box.clientWidth >= box.scrollWidth - 4) cur = cards.length - 1;
+      btns.forEach((b, i) => b.classList.toggle('on', i === cur));
+    };
+    btns.forEach((b, i) => b.addEventListener('click', () => box.scrollTo({ left: cards[i].offsetLeft - box.offsetLeft - 20, behavior: 'smooth' })));
+    box.addEventListener('scroll', upd, { passive: true });
+    upd();
+  }
+})();
 
 // Nav
 const nav = $('#nav'), burger = $('#burger'), links = $('#links');
